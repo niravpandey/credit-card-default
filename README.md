@@ -159,11 +159,14 @@ The trees rely most on how recently and how badly the client was late, and on th
 
 ## Comparison
 
-| model | features | cross-validated log-likelihood | test AUC |
-|---|---|---|---|
-| logistic regression | 18 | −0.4308 | 0.782 |
-| neural network | 68 | −0.4258 | 0.785 |
-| XGBoost (tuned) | 68 | **−0.4225** | **0.786** |
+| model | features | CV log-likelihood | test AUC | accuracy at 0.5 | recall | precision | F1 |
+|---|---|---|---|---|---|---|---|
+| always "no default" | – | −0.528 | 0.500 | 77.9% | 0% | – | – |
+| logistic regression | 18 | −0.4308 | 0.782 | 82.0% | 65.2% | 45.1% | 0.533 |
+| neural network | 68 | −0.4258 | 0.785 | 82.1% | 64.8% | 44.8% | 0.530 |
+| XGBoost (tuned) | 68 | **−0.4225** | **0.786** | **82.5%** | 64.4% | **46.5%** | **0.540** |
+
+Recall (share of defaulters caught), precision (share of flagged clients who really default) and F1 are at each model's threshold, chosen to catch about 65% of defaulters. Accuracy is at a threshold of 0.5: always predicting "no default" is already 77.9% accurate because only 22% of clients default, so accuracy alone says little here.
 
 ## To do
 
