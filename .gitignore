@@ -1,0 +1,6 @@
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+
+# data is downloaded and rebuilt by code/eda.ipynb
+data/
